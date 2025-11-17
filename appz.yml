@@ -1,17 +1,17 @@
 app:
     name: OpenProject
     code: OPENPROJECT 
-    notify: appzdev@cloudbourne.co
+  #  notify: appzdev@cloudbourne.co
 
 build:
     version: 12.3
-    env: PROD
+    env: DEV
     build_file: none
     output_files: output/*.zip
     image_template: openproject-12.3
 
 deploy:
-    context: ecloudcontrol/PROD
+    context: nithinc-cloud/DEV
     type: statefulset
     replicas: 1
     #ingress: none
