@@ -8,7 +8,7 @@ build:
     env: DEV
     build_file: none
     output_files: output/*.zip
-    image_template: openproject-12.3
+    image_template: openproject-16.1
 
 deploy:
     context: nithinc-cloud/DEV
@@ -34,7 +34,7 @@ properties:
 
     SECRET_KEY_BASE: 
       vault: SECRET_KEY_BASE
-    POSTGRES_HOST: openproject-postgres-13-x
+    POSTGRES_HOST: openproject-postgres-17-1
     POSTGRES_PORT: 5432
     POSTGRES_DB: openproject
     POSTGRES_USER: openproject
