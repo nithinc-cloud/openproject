@@ -42,8 +42,6 @@ properties:
     OPENPROJECT_SIDEKIQ_CONCURRENCY: "2"
     ATTACHMENTS_STORAGE_PATH: /appz/data/openproject
 
-    ATTACHMENTS_STORAGE_PATH: /appz/data/openproject
-
     SECRET_KEY_BASE: 
       vault: SECRET_KEY_BASE
     POSTGRES_HOST: openproject-postgres-17-1
