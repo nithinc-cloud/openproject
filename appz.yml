@@ -30,6 +30,18 @@ volumes:
   size: 5Gi
 
 properties:
+# ------------------ OpenProject Memory Tuning ------------------
+
+    # Puma workers (processes)
+    WEB_CONCURRENCY: "1"
+
+    # Puma threads per worker
+    RAILS_MAX_THREADS: "2"
+
+    # Sidekiq background job concurrency
+    OPENPROJECT_SIDEKIQ_CONCURRENCY: "2"
+    ATTACHMENTS_STORAGE_PATH: /appz/data/openproject
+
     ATTACHMENTS_STORAGE_PATH: /appz/data/openproject
 
     SECRET_KEY_BASE: 
