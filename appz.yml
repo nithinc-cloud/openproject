@@ -1,58 +1,64 @@
 app:
-    name: OpenProject
-    code: OPENPROJECT 
-  #  notify: appzdev@cloudbourne.co
+  name: OpenProject
+  code: OPENPROJECT
+  # notify: appzdev@cloudbourne.co
 
 build:
-    version: 12.3
-    env: DEV
-    build_file: none
-    output_files: output/*.zip
-    image_template: openproject-16.1
+  version: 12.3
+  env: DEV
+  build_file: none
+  output_files: output/*.zip
+  image_template: openproject-16.1
 
 deploy:
-    context: nithinc-cloud/DEV
-    type: statefulset
-    replicas: 1
-    #ingress: none
-    resources:
+  context: nithinc-cloud/DEV
+  type: statefulset
+  replicas: 1
+  # ingress: none
+
+  resources:
     requests:
       cpu: "1"
       memory: "2Gi"
     limits:
       cpu: "2"
       memory: "4Gi"
-    port:
+
+  port:
     - 80
     - 9102
     - 30617
+
 volumes:
-- claim: openproject-assets
-  mount: /appz/data/openproject  
-  name: assets
-  size: 5Gi
-- claim: openproject-backup
-  mount: /appz/backup 
-  name: backup
-  size: 5Gi
+  - claim: openproject-assets
+    mount: /appz/data/openproject
+    name: assets
+    size: 5Gi
+
+  - claim: openproject-backup
+    mount: /appz/backup
+    name: backup
+    size: 5Gi
 
 properties:
-# ------------------ OpenProject Memory Tuning ------------------
+  # ------------------ OpenProject Memory & Thread Tuning ------------------
 
-    RAILS_MIN_THREADS: "5"
-    RAILS_MAX_THREADS: "5"
+  RAILS_MIN_THREADS: "5"
+  RAILS_MAX_THREADS: "5"
+  GOOD_JOB_MAX_THREADS: "1"
 
-    GOOD_JOB_MAX_THREADS: "1"
-    
-    ATTACHMENTS_STORAGE_PATH: /appz/data/openproject
+  ATTACHMENTS_STORAGE_PATH: /appz/data/openproject
 
-    SECRET_KEY_BASE: 
-      vault: SECRET_KEY_BASE
-    POSTGRES_HOST: openproject-postgres-17-1
-    POSTGRES_PORT: 5432
-    POSTGRES_DB: openproject
-    POSTGRES_USER: openproject
-    POSTGRES_PASSWORD: 
-      vault: POSTGRESQL_OPENPROJECT_PASSWORD
-    ENABLE_BACKUP_METRICS: 1
-    revision: 47
+  SECRET_KEY_BASE:
+    vault: SECRET_KEY_BASE
+
+  POSTGRES_HOST: openproject-postgres-17-1
+  POSTGRES_PORT: 5432
+  POSTGRES_DB: openproject
+  POSTGRES_USER: openproject
+  POSTGRES_PASSWORD:
+    vault: POSTGRESQL_OPENPROJECT_PASSWORD
+
+  ENABLE_BACKUP_METRICS: "1"
+  revision: "47"
+
