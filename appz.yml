@@ -15,6 +15,13 @@ deploy:
     type: statefulset
     replicas: 1
     #ingress: none
+    resources:
+    requests:
+      cpu: "1"
+      memory: "2Gi"
+    limits:
+      cpu: "2"
+      memory: "4Gi"
     port:
     - 80
     - 9102
@@ -32,14 +39,10 @@ volumes:
 properties:
 # ------------------ OpenProject Memory Tuning ------------------
 
-    WEB_CONCURRENCY: "1"
+    RAILS_MIN_THREADS: "5"
+    RAILS_MAX_THREADS: "5"
 
-    RAILS_MIN_THREADS: "2"
-    RAILS_MAX_THREADS: "2"
-
-    GOOD_JOB_MAX_THREADS: "2"
-
-    MALLOC_ARENA_MAX: "2"
+    GOOD_JOB_MAX_THREADS: "1"
     
     ATTACHMENTS_STORAGE_PATH: /appz/data/openproject
 
