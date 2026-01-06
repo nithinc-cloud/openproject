@@ -15,15 +15,6 @@ deploy:
   type: statefulset
   replicas: 1
   # ingress: none
-
-  resources:
-    requests:
-      cpu: "1"
-      memory: "2Gi"
-    limits:
-      cpu: "2"
-      memory: "4Gi"
-
   port:
     - 80
     - 9102
@@ -42,7 +33,7 @@ volumes:
 
 properties:
   # ------------------ OpenProject Memory & Thread Tuning ------------------
-
+  OPENPROJECT_WEB_WORKERS: "1"
   RAILS_MIN_THREADS: "5"
   RAILS_MAX_THREADS: "5"
   GOOD_JOB_MAX_THREADS: "1"
