@@ -32,14 +32,15 @@ volumes:
 properties:
 # ------------------ OpenProject Memory Tuning ------------------
 
-    # Puma workers (processes)
     WEB_CONCURRENCY: "1"
 
-    # Puma threads per worker
+    RAILS_MIN_THREADS: "2"
     RAILS_MAX_THREADS: "2"
 
-    # Sidekiq background job concurrency
-    OPENPROJECT_SIDEKIQ_CONCURRENCY: "2"
+    GOOD_JOB_MAX_THREADS: "2"
+
+    MALLOC_ARENA_MAX: "2"
+    
     ATTACHMENTS_STORAGE_PATH: /appz/data/openproject
 
     SECRET_KEY_BASE: 
