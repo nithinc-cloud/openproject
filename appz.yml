@@ -34,8 +34,8 @@ volumes:
 properties:
   # ------------------ OpenProject Memory & Thread Tuning ------------------
   OPENPROJECT_WEB_WORKERS: "1"
-  RAILS_MIN_THREADS: "5"
-  RAILS_MAX_THREADS: "5"
+  RAILS_MIN_THREADS: "3"
+  RAILS_MAX_THREADS: "3"
   GOOD_JOB_MAX_THREADS: "1"
 
   ATTACHMENTS_STORAGE_PATH: /appz/data/openproject
